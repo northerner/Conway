@@ -38,14 +38,20 @@ namespace Conway
         private void pause_Click(object sender, EventArgs e)
         {
             if (drawTimer.Enabled)
+            {
                 drawTimer.Stop();
+                pause.Text = "Play";
+            }
             else
+            {
                 drawTimer.Start();
+                pause.Text = "Pause";
+            }
         }
 
         private void Form1_MouseClick(object sender, MouseEventArgs e)
         {
-            game.clickCell(MousePosition.X, MousePosition.Y);
+            game.clickCell(e.X, e.Y);
             Invalidate();
         }
 

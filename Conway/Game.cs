@@ -19,37 +19,12 @@ namespace Conway
         public Game()
         {
             oldGrid = createGrid(rows, columns);
-            
-            // DEBUG CELLS
-            setCellAlive(0, 1);
-            setCellAlive(2, 1);
-            setCellAlive(2, 4);
-            setCellAlive(2, 5);
-            setCellAlive(3, 6);
-            setCellAlive(3, 7);
-            setCellAlive(4, 6);
-            setCellAlive(4, 5);
-            setCellAlive(20, 15);
-            setCellAlive(20, 45);
-            setCellAlive(22, 46);
-            setCellAlive(20, 12);
-            setCellAlive(21, 3);
-            setCellAlive(22, 3);
-            setCellAlive(20, 23);
-            setCellAlive(20, 24);
-            setCellAlive(20, 25);
-            setCellAlive(20, 26);
-            setCellAlive(21, 20);
-            setCellAlive(22, 20);
-
-
         }
 
         private Grid createGrid(int rows, int columns)
         {
-            // Not sure why rowNumber has to start at -1, but causes a bug at 0
             int rowNumber = 0;
-            int columnNumber = 0;
+            //int columnNumber = 0;
             Grid grid = new Grid();
             for (int i = 0; i < rows; i++ )
             {
@@ -61,13 +36,9 @@ namespace Conway
                 for (int i = 0; i < columns; i++)
                 {
                     row.AddCellRight(rowNumber, i);
-                    
                 }
-                
                 rowNumber++;
             }
-
-
             return grid;
         }
 
@@ -105,7 +76,6 @@ namespace Conway
 
         public void nextGeneration()
         {
-            //newGrid = oldGrid;
             foreach (Row row in oldGrid.Rows)
             {
                 foreach (Cell cell in row.Cells)
@@ -129,7 +99,6 @@ namespace Conway
                     cell.Alive = cell.nextAlive;                    
                 }
             }
-            //oldGrid = newGrid;
         }
 
         private int getSurroundingAliveCount(Cell cell)
